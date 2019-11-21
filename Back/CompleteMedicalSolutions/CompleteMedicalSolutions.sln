@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompleteMedicalSolutions", "CompleteMedicalSolutions\CompleteMedicalSolutions.csproj", "{C4A9A0AE-5BF3-45D4-AC03-DEF9BDB93FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompleteMedicalSolutions", "CompleteMedicalSolutions\CompleteMedicalSolutions.csproj", "{C4A9A0AE-5BF3-45D4-AC03-DEF9BDB93FBB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE0D2120-11CE-47DD-A218-3A80BDB03941} = {EE0D2120-11CE-47DD-A218-3A80BDB03941}
+		{26778268-E250-4C5B-ADB2-C02806BE6ACF} = {26778268-E250-4C5B-ADB2-C02806BE6ACF}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{E52A6556-2FA1-426F-B526-9B7D1A9FCD00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{EE0D2120-11CE-47DD-A218-3A80BDB03941}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{C7A68473-9762-4C02-A61F-A0492D6E3CA2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{139C398A-4CD0-45EE-8836-F8A4AB446FFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{26778268-E250-4C5B-ADB2-C02806BE6ACF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +23,14 @@ Global
 		{C4A9A0AE-5BF3-45D4-AC03-DEF9BDB93FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A9A0AE-5BF3-45D4-AC03-DEF9BDB93FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4A9A0AE-5BF3-45D4-AC03-DEF9BDB93FBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E52A6556-2FA1-426F-B526-9B7D1A9FCD00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E52A6556-2FA1-426F-B526-9B7D1A9FCD00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E52A6556-2FA1-426F-B526-9B7D1A9FCD00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E52A6556-2FA1-426F-B526-9B7D1A9FCD00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7A68473-9762-4C02-A61F-A0492D6E3CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7A68473-9762-4C02-A61F-A0492D6E3CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7A68473-9762-4C02-A61F-A0492D6E3CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7A68473-9762-4C02-A61F-A0492D6E3CA2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{139C398A-4CD0-45EE-8836-F8A4AB446FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{139C398A-4CD0-45EE-8836-F8A4AB446FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{139C398A-4CD0-45EE-8836-F8A4AB446FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{139C398A-4CD0-45EE-8836-F8A4AB446FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE0D2120-11CE-47DD-A218-3A80BDB03941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE0D2120-11CE-47DD-A218-3A80BDB03941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE0D2120-11CE-47DD-A218-3A80BDB03941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE0D2120-11CE-47DD-A218-3A80BDB03941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26778268-E250-4C5B-ADB2-C02806BE6ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26778268-E250-4C5B-ADB2-C02806BE6ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26778268-E250-4C5B-ADB2-C02806BE6ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26778268-E250-4C5B-ADB2-C02806BE6ACF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

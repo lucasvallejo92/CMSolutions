@@ -1,0 +1,11 @@
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.csprojAssemblyReference.cache
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.AssemblyInfoInputs.cache
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.AssemblyInfo.cs
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.exe
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.deps.json
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.runtimeconfig.json
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.runtimeconfig.dev.json
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.dll
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.pdb
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.dll
+C:\Projects\Facultad\Back\CompleteMedicalSolutions\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.pdb
