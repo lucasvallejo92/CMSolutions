@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.DTOs;
 using Repository.Interfaces;
 
 namespace CompleteMedicalSolutions.Controllers
 {
+    [Authorize]
+    [ApiController]
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
@@ -21,9 +24,23 @@ namespace CompleteMedicalSolutions.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<List<UserDTO>> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var users = _repository.GetAllAsync();
+
+                if (users == null)
+                {
+                    return NotFound(new { message = "ERROR" });
+                }
+                
+                return Ok(users);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
         // GET api/<controller>/5

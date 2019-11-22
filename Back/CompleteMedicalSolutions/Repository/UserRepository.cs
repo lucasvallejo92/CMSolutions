@@ -8,6 +8,7 @@ using Repository.DTOs;
 using Repository.Enums;
 using Repository.Interfaces;
 using Repository.Models;
+using Repository.Utils;
 
 namespace Repository
 {
@@ -20,32 +21,16 @@ namespace Repository
             _context = context;
         }
 
-        //public async Task<IEnumerable<UserDTO>> GetAllAsync()
-        //{
-        //    var users = await _context.Users.ToListAsync();
-        //    return new IEnumerable<UserDTO>(users);
-        //}
+        public List<UserDTO> GetAllAsync()
+        {
+            return _context.Users.Select(UserHandler.MapToApp).ToList();
+        }
+        
 
         public async Task<UserDTO> GetAsync(int id)
         {
             var user = await _context.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
-            return ParseUser(user);
-        }
-
-        private UserDTO ParseUser(User user)
-        {
-            if (user == null)
-            {
-                return null;
-            }
-            var usr = new UserDTO();
-            usr.Id = user.Id;
-            usr.Email = user.Email;
-            usr.Type = user.Type;
-            usr.UpdatedAt = user.UpdatedAt;
-            usr.Status = user.Status;
-
-            return usr;
+            return UserHandler.MapToApp(user);
         }
 
         public async Task<bool> AddAsync(UserDTO entity)
@@ -100,5 +85,7 @@ namespace Repository
 
             return user == null ? ResponseType.Not_Found : ResponseType.Ok;
         }
+        
+        
     }
 }
