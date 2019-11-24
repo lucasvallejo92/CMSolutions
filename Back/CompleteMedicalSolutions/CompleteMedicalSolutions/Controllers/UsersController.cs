@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CompleteMedicalSolutions.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.DTOs;
 using Repository.Interfaces;
+using Repository.Models;
 
 namespace CompleteMedicalSolutions.Controllers
 {
@@ -15,10 +17,12 @@ namespace CompleteMedicalSolutions.Controllers
     {
 
         private readonly IRepository<UserDTO> _repository;
+        private readonly IAuthRepository<UserDTO> _authRepository;
 
-        public UsersController(IRepository<UserDTO> repository)
+        public UsersController(IRepository<UserDTO> repository, IAuthRepository<UserDTO> authRepository)
         {
             _repository = repository;
+            _authRepository = authRepository;
         }
 
 
@@ -66,9 +70,34 @@ namespace CompleteMedicalSolutions.Controllers
         }
 
         // POST api/<controller>
+        [AllowAnonymous]
         [HttpPost]
         public void Post([FromBody]string value)
         {
+        }
+        
+        // POST api/<controller>
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<ActionResult> LogIn([FromBody]UserCredentials credentials)
+        {
+            try
+            {
+                var user = await _authRepository.AuthorizeAsync(credentials);
+                
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                
+                var key = TokenHandler.CreateToken();
+                return new ObjectResult(new { token = key });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500);
+            }
         }
 
         // PUT api/<controller>/5

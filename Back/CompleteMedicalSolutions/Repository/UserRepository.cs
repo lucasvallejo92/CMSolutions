@@ -12,7 +12,7 @@ using Repository.Utils;
 
 namespace Repository
 {
-    public class UserRepository : IRepository<UserDTO>, IAuthRepository<UserCredentials>
+    public class UserRepository : IRepository<UserDTO>, IAuthRepository<UserDTO>
     {
         private readonly CmsolutionsContext _context;
 
@@ -79,11 +79,10 @@ namespace Repository
             return ResponseType.Deleted;
         }
         
-        public async Task<ResponseType> AuthorizeAsync(UserCredentials credentials)
+        public async Task<UserDTO> AuthorizeAsync(UserCredentials credentials)
         {
             var user = await _context.Users.Where(x => x.Email == credentials.Email && x.Password == credentials.Password).FirstOrDefaultAsync();
-
-            return user == null ? ResponseType.Not_Found : ResponseType.Ok;
+            return user == null ? null : UserHandler.MapToApp(user);
         }
         
         

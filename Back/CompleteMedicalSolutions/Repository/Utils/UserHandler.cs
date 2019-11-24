@@ -1,5 +1,5 @@
 ﻿using System;
-using Entities;
+using Entities.Models;
 using Repository.DTOs;
 
 namespace Repository.Utils

@@ -14,7 +14,15 @@
    "Tables": [
       {
          "HasPrimaryKey": true,
-         "Name": "professionals"
+         "Name": "medical_records"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "patients"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "shifts"
       },
       {
          "HasPrimaryKey": true,

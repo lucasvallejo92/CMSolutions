@@ -4,26 +4,21 @@ using System.Collections.Generic;
 
 namespace Entities.Models
 {
-    public partial class User
+    public partial class Patient
     {
-        public User()
+        public Patient()
         {
             MedicalRecords = new HashSet<MedicalRecord>();
             Shifts = new HashSet<Shift>();
         }
 
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Type { get; set; }
+        public string Dni { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public int ProfId { get; set; }
-        public string EnrollmentNum { get; set; }
-        public string EnrollmentType { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime Birthday { get; set; }
+        public string Lender { get; set; }
+        public string UpdatedAt { get; set; }
         public sbyte Status { get; set; }
 
         public virtual ICollection<MedicalRecord> MedicalRecords { get; set; }
