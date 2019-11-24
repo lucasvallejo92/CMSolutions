@@ -59,8 +59,7 @@ namespace Repository.Utils
                 patientFromDb.Surname = entity.Surname ?? patientFromDb.Surname;
                 patientFromDb.Birthday = entity.Birthday;
                 patientFromDb.Lender = entity.Lender ?? patientFromDb.Lender;
-                // TODO: resolve date conflict
-                // patientFromDb.UpdatedAt = new DateTime();
+                patientFromDb.UpdatedAt = DateTime.Now;
                 patientFromDb.Status = entity.Status;
                 return patientFromDb;
             }
