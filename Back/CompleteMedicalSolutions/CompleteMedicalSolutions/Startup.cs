@@ -65,6 +65,7 @@ namespace CompleteMedicalSolutions
             // Relationships
             services.AddTransient<IRepository<UserDTO>, UserRepository>();
             services.AddTransient<IAuthRepository<UserDTO>, UserRepository>();
+            services.AddTransient<IRepository<PatientDTO>, PatientRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

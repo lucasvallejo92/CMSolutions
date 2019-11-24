@@ -18,7 +18,7 @@ namespace Entities.Models
         public string Surname { get; set; }
         public DateTime Birthday { get; set; }
         public string Lender { get; set; }
-        public string UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public sbyte Status { get; set; }
 
         public virtual ICollection<MedicalRecord> MedicalRecords { get; set; }

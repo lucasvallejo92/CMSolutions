@@ -74,7 +74,8 @@ namespace Repository.Utils
                 userFromDb.Phone = entity.Phone;
                 userFromDb.Address = entity.Address;
                 userFromDb.Type = entity.Type;
-                userFromDb.UpdatedAt = new DateTime();
+                // TODO: resolve date conflict
+                // userFromDb.UpdatedAt = new DateTime();
                 userFromDb.Status = entity.Status;
                 return userFromDb;
             }

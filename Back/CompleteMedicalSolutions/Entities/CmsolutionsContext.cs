@@ -122,8 +122,8 @@ namespace Entities
                 entity.Property(e => e.UpdatedAt)
                     .IsRequired()
                     .HasColumnName("updated_at")
-                    .HasColumnType("varchar(45)")
-                    .HasDefaultValueSql("'CURRENT_TIMESTAMP()'");
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'current_timestamp()'");
             });
 
             modelBuilder.Entity<Shift>(entity =>
