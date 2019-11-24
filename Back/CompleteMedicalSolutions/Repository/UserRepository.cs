@@ -35,33 +35,50 @@ namespace Repository
 
         public async Task<bool> AddAsync(UserDTO entity)
         {
-            var allreadyExists = await _context.Users.Where(x => x.Id == entity.Id).FirstOrDefaultAsync();
+            var allreadyExists = await _context.Users.Where(x => x.Email == entity.Email).FirstOrDefaultAsync();
 
             if (allreadyExists != null)
             {
                 return false;
             }
 
-            // _context.Users.Add(_mapper.Map<Users>(entity));
+            _context.Users.Add(UserHandler.MapToDb(entity));
             await _context.SaveChangesAsync();
 
             return true;
         }
         public async Task<bool> UpdateAsync(int id, UserDTO entity)
         {
-            var user = await _context.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
-
-            // user = _mapper.Map(entity, user);
-
             try
             {
+                var user = await _context.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+                var valid = entity.Email == user.Email || await ValidateEmail(entity.Email);
+                if (!valid)
+                {
+                    return false;
+                }
+                
+                user = UserHandler.UpdateToDb(user, entity);
+                
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e);
                 return false;
             }
+        }
+
+        private async Task<bool> ValidateEmail(string email)
+        {
+            if (email == null)
+            {
+                return true;
+            }
+            var user = await _context.Users.Where(x => x.Email == email).FirstOrDefaultAsync();
+            return user == null;
         }
 
         public async Task<ResponseType> DeleteAsync(int id)

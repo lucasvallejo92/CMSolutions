@@ -72,7 +72,49 @@ namespace CompleteMedicalSolutions.Controllers
         // POST api/<controller>
         [AllowAnonymous]
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<ActionResult<bool>> Post([FromBody]UserDTO user)
+        {
+            try
+            {
+                if (user.Id != 0)
+                {
+                    return StatusCode(400, new {message = "BAD_REQUEST"});
+                }
+                var created = await _repository.AddAsync(user);
+                var response = created ?
+                    StatusCode(201, new {message = "CREATED"}):
+                    StatusCode(400, new {message = "ALREADY_EXISTS"});
+                return response;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500);
+            }
+        }
+
+        // PUT api/<controller>/5
+        [HttpPut("{id}")]
+        public async Task<ActionResult<bool>> Put(int id, [FromBody]UserDTO user)
+        {
+            try
+            {
+                var updated = await _repository.UpdateAsync(id, user);
+                var response = updated ?
+                    StatusCode(201, new {message = "UPDATED"}):
+                    StatusCode(400, new {message = "CANNOT_UPDATE"});
+                return response;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500);
+            }
+        }
+
+        // DELETE api/<controller>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
         }
         
@@ -98,18 +140,6 @@ namespace CompleteMedicalSolutions.Controllers
                 Console.WriteLine(e);
                 return StatusCode(500);
             }
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
