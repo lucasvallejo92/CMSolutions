@@ -126,7 +126,7 @@ namespace CompleteMedicalSolutions.Controllers
                     return NotFound();
                 }
                 
-                var key = TokenHandler.CreateToken();
+                var key = TokenHandler.CreateToken(user);
                 return new ObjectResult(new { token = key });
             }
             catch (Exception e)
