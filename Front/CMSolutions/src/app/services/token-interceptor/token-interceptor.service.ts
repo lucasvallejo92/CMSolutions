@@ -16,6 +16,6 @@ export class TokenInterceptorService implements HttpInterceptor {
         Authorization: authService.token
       }
     });
-    return next.handle(authService.token ? tokenizedReq : null);
+    return next.handle(tokenizedReq);
   }
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
-import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 import { ICredential } from 'src/app/interfaces/ICredential.interface';
-import { IUser } from './IUser.interface';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +13,32 @@ export class AuthService {
   private endpoint = `${environment.api_uri}/users/login`;
   public token: string;
 
-  constructor(private _http: HttpClient, private _router: Router) {
-    this.token = localStorage.getItem('token') || null;
+  constructor(private _http: HttpClient, private _router: Router, private _toastr: ToastrService) {
+    this.token = localStorage.getItem('token') || 'Bearer xx.yy.zz';
   }
 
-  login(credentials: ICredential) {
-    let bearer: Subscription = this._http.post<{ token: string }>(this.endpoint, credentials).subscribe(resp => {
-      if (resp && resp.token) {
-        this.token = resp.token;
-        localStorage.setItem('token', resp.token);
-        this._router.navigate(['']);
-        bearer.unsubscribe();
-      }
-    });
+  login(credentials: ICredential): void {
+    let bearer: Subscription = this._http.post<{ token: string }>(this.endpoint, credentials)
+      .subscribe(resp => {
+        if (resp && resp.token) {
+          this.token = resp.token;
+          localStorage.setItem('token', resp.token);
+          this._router.navigate(['']);
+          bearer.unsubscribe();
+        }
+      }, (err: HttpErrorResponse) => {
+        if (err) {
+          switch (err.status) {
+            case 404:
+              this._toastr.error('El email o contraseña son invalidos');
+              break;
+            default:
+              this._toastr.error('Ocurrio un error, por favor intentelo nuevamente.');
+              break;
+          }
+          bearer.unsubscribe();
+        }
+      });
   }
   logout() {
     localStorage.removeItem('token');

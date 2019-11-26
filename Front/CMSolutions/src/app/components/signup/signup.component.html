@@ -1,0 +1,62 @@
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Registrate</h1>
+              </div>
+              <form class="user" [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" formControlName="name" minlength="3" class="form-control form-control-user" id="controlFirstName" placeholder="Nombre">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" formControlName="surname" minlength="3" class="form-control form-control-user" id="controlLastName" placeholder="Apellido">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" formControlName="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,4}$" class="form-control form-control-user" id="controlInputEmail" placeholder="Correo electrónico">
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" formControlName="password" minlength="6" class="form-control form-control-user" id="controlInputPassword" placeholder="Contraseña">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" formControlName="passwordValidator" minlength="6" class="form-control form-control-user" id="controlRepeatPassword" placeholder="Repetir contraseña">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" formControlName="enrollmentType" class="form-control form-control-user" id="controlenrollmentType" placeholder="Tipo de matricula">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" formControlName="enrollmentNum" minlength="3" class="form-control form-control-user" id="controlenrollmentNum" placeholder="Nro de matricula">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" formControlName="phone" minlength="6" class="form-control form-control-user" id="controlPhone" placeholder="teléfono">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" formControlName="address" minlength="4" class="form-control form-control-user" id="controlAddress" placeholder="Dirección">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-user btn-block">
+                  Registrar Cuenta
+                </button>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a [routerLink]="[ '/login']" class="small">¿Ya tienes una cuenta? Inicia sesión</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
