@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users/users.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 export class SignupComponent implements OnInit {
   form: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public userService: UsersService, public _toastr: ToastrService) {
+  constructor(
+    public formBuilder: FormBuilder,
+    public userService: UsersService,
+    public _toastr: ToastrService,
+    public _authService: AuthService
+  ) {
+    this._authService.logout();
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],

@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(public formBuilder: FormBuilder, public _authService: AuthService, private _toastr: ToastrService) {
+    this._authService.logout();
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]

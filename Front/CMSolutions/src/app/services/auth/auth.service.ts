@@ -21,8 +21,8 @@ export class AuthService {
     let bearer: Subscription = this._http.post<{ token: string }>(this.endpoint, credentials)
       .subscribe(resp => {
         if (resp && resp.token) {
-          this.token = resp.token;
-          localStorage.setItem('token', resp.token);
+          this.token = 'Bearer ' + resp.token;
+          localStorage.setItem('token', this.token);
           this._router.navigate(['']);
           bearer.unsubscribe();
         }

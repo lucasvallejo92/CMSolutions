@@ -13,7 +13,7 @@ import { IUserCreate } from 'src/app/interfaces/IUserCreate.interface';
 export class UsersService {
   private endpoint = `${environment.api_uri}/users/`;
   public user: IUser = null;
-  public users: IUser[] = null;
+  public users: IUser[] = [];
   public pagina = 0;
 
   constructor(private _http: HttpClient, private _router: Router, private _toastr: ToastrService) { }
