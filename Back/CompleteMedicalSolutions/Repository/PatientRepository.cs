@@ -28,7 +28,7 @@ namespace Repository
 
         public async Task<PatientDTO> GetAsync(int id)
         {
-            var patient = await _context.Patients.Where(x => x.Id == id).FirstOrDefaultAsync();
+            var patient = await _context.Patients.Where(x => x.Id == id).Include(p => p.MedicalRecords).ThenInclude(m => m.User).FirstOrDefaultAsync();
             return PatientHandler.MapToApp(patient);
         }
 

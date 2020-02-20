@@ -18,7 +18,7 @@ export class UsersService {
 
   constructor(private _http: HttpClient, private _router: Router, private _toastr: ToastrService) { }
 
-  get(id: string): void {
+  public get(id: string): void {
     const uri = this.endpoint + id;
     let response: Subscription = this._http.get<IUser>(uri)
       .subscribe(resp => {
@@ -29,7 +29,7 @@ export class UsersService {
       }, err => this.errorHandler(err, response));
   }
 
-  getAll(): void {
+  public getAll(): void {
     const uri = this.endpoint;
     let response: Subscription = this._http.get<IUser[]>(uri)
       .subscribe(resp => {
@@ -40,7 +40,7 @@ export class UsersService {
       }, err => this.errorHandler(err, response));
   }
 
-  create(user: IUserCreate): void {
+  public create(user: IUserCreate): void {
     const uri = this.endpoint;
     let response: Subscription = this._http.post<any>(uri, user)
       .subscribe(resp => {
@@ -52,7 +52,7 @@ export class UsersService {
       }, err => this.errorHandler(err, response));
   }
 
-  update(user: IUser): void {
+  public update(user: IUser): void {
     const uri = this.endpoint + user.id;
     let response: Subscription = this._http.put<any>(uri, user)
       .subscribe(resp => {

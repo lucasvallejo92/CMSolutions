@@ -10,46 +10,43 @@
         <h1 class="h3 mb-2 text-gray-800">Pacientes</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint in et culpa molestiae repudiandae! Officiis deleniti dolores maxime libero sunt quam autem, fuga quia minima tempore</p>
         <div class="d-flex align-items-end flex-column p-2">
-            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
+            <button [routerLink]="['/pacientes/alta']" class="btn btn-primary btn-icon-split btn-sm">
                 <span class="icon text-white-50">
                     <i class="fas fa-arrow-right"></i>
                 </span>
                 <span class="text">Nuevo paciente</span>
-            </a>
+            </button>
         </div>
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4" *ngIf="patientsService?.patients?.length">
             <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Nombre</th>
                         <th>DNI</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>F. Nacimiento</th>
+                        <th>O.S.</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <!--  -->
                 </tfoot>
                 <tbody>
-                    <tr *ngFor="let item of userService?.users">
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.surname }}</td>
-                        <td>{{ item.email }}</td>
-                        <td>{{ item.address }}</td>
-                        <td>{{ item.phone }}</td>
-                        <td>{{ item.enrollmentType }}</td>
+                    <tr *ngFor="let item of patientsService?.patients">
+                        <td class="pointer" [routerLink]="['/pacientes/', item.id]">{{ item.id }}</td>
+                        <td class="pointer" [routerLink]="['/pacientes/', item.id]">{{ item.name }} {{ item.surname }}</td>
+                        <td>{{ item.dni }}</td>
+                        <td>{{ showDate(item.birthday) }}</td>
+                        <td>{{ item.lender }}</td>
                     </tr>
                 </tbody>
                 </table>
             </div>
             </div>
         </div>
-
         </div>
     </div>
     

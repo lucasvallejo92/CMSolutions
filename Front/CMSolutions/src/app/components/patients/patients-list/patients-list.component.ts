@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/interfaces/IUser.interface';
-import { UsersService } from 'src/app/services/users/users.service';
+import { PatientsService } from '../../../services/patients/patients.service';
+import { showDate } from '../../../utils/dateHandler';
 
 @Component({
   selector: 'app-patients-list',
@@ -8,11 +8,9 @@ import { UsersService } from 'src/app/services/users/users.service';
   styleUrls: ['./patients-list.component.scss']
 })
 export class PatientsListComponent implements OnInit {
-
-  bla = 'hola';
-
-  constructor(public userService: UsersService) {
-    this.userService.getAll();
+  public showDate = showDate;
+  constructor(public patientsService: PatientsService) {
+    this.patientsService.getAll();
   }
 
   ngOnInit() {

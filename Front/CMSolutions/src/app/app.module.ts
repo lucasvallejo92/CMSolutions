@@ -10,12 +10,13 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SignupComponent } from './components/signup/signup.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PatientsListComponent } from './components/patients-list/patients-list.component';
-import { SidebarMenuComponent } from './shared-components/sidebar-menu/sidebar-menu.component';
+import { PatientsListComponent } from './components/patients/patients-list/patients-list.component';
 import { FooterComponent } from './shared-components/footer/footer.component';
 import { HeaderComponent } from './shared-components/header/header.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { PatientsDetailComponent } from './components/patients/patients-detail/patients-detail.component';
+import { PatientsCuComponent } from './components/patients/patients-cu/patients-cu.component';
+import { MedicalRecordsListComponent } from './components/medical-records/medical-records-list/medical-records-list.component';
 
 
 @NgModule({
@@ -23,11 +24,12 @@ import { JwtModule } from '@auth0/angular-jwt';
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent,
     PatientsListComponent,
-    SidebarMenuComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    PatientsDetailComponent,
+    PatientsCuComponent,
+    MedicalRecordsListComponent
   ],
   imports: [
     CommonModule,

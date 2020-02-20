@@ -1,0 +1,80 @@
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+        <app-header></app-header>
+        <!-- Begin Page Content -->
+        <div class="container-fluid" style="width: 100vp;">
+            <div class="row ml-5 mr-5">
+                <div class="col-md-12">
+                    <h1 *ngIf="patientsService?.patient?.name || patientsService?.patient?.surname" class="h3 mb-4 text-gray-800">
+                        Paciente: {{ patientsService?.patient?.name + ' ' + patientsService?.patient?.surname }}
+                    </h1>
+                    <p *ngIf="patientsService?.patient?.dni"><b>DNI:</b> {{ patientsService?.patient?.dni }}</p>
+                    <p *ngIf="patientsService?.patient?.lender"><b>Obra social:</b> {{ patientsService?.patient?.lender }}</p>
+                    <p *ngIf="patientsService?.patient?.birthday"><b>Fecha de nacimiento:</b> {{ showDate(patientsService?.patient?.birthday) }}</p>
+                </div>
+                <div class="col-md-12">
+                    <hr />
+                </div>
+                <div class="col-md-12" *ngIf="patientsService?.lastMR">
+                    <h1 class="h4 mb-4 text-gray-800">Ultimo registro de la historia clínica</h1>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <p *ngIf="patientsService?.lastMR?.id">
+                                <b>Registro nro:</b> {{ patientsService?.lastMR?.id }}
+                            </p>
+                            <p *ngIf="patientsService?.lastMR?.pathology">
+                                <b>Patología:</b> {{ patientsService?.lastMR?.pathology }}
+                            </p>
+                            <p *ngIf="patientsService?.lastMR?.createdAt">
+                                <b>Fecha:</b> {{ showDate(patientsService?.lastMR?.createdAt) }}
+                            </p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p *ngIf="patientsService?.patient?.dni"><b>Médico: </b>
+                                {{ patientsService?.lastMR?.user?.name + ' ' + patientsService?.lastMR?.user?.surname }}
+                            </p>
+                            <p *ngIf="patientsService?.lastMR?.user?.enrollmentNum">
+                                <b>Matrícula:</b> {{ patientsService?.lastMR?.user?.enrollmentNum }}
+                            </p>
+                            <p *ngIf="patientsService?.lastMR?.user?.phone">
+                                <b>Teléfono del profesional:</b> {{ patientsService?.lastMR?.user?.phone }}
+                            </p>
+                            <p *ngIf="patientsService?.lastMR?.user?.email">
+                                <b>Email del profesional:</b> {{ patientsService?.lastMR?.user?.email }}
+                            </p>
+                        </div>
+                        <div class="col-lg-12">
+                            <p><b>Descripción:</b></p>
+                            <p>{{ patientsService?.lastMR?.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="patientsService?.lastMR" class="col-md-12 mb-4">
+                    <hr />
+                </div>
+            </div>
+            <!-- Page Heading -->
+            <div class="row ml-5 mr-5">
+                <div class="d-flex align-items-end flex-column p-2">
+                    <button class="btn btn-primary btn-icon-split btn-sm">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-edit"></i>
+                        </span>
+                        <span class="text">Modificar</span>
+                    </button>
+                </div>
+                <div class="d-flex align-items-end flex-column p-2">
+                    <button class="btn btn-primary btn-icon-split btn-sm">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-book-medical"></i>
+                        </span>
+                        <span class="text">Historias Clínicas</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</div>
